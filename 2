@@ -1,0 +1,50 @@
+/*Leia e armazene num vetor de 10 posições o nome dos alunos aprovados no vestibular para 
+Ciência da Computação em 2007/1. A seguir, leia um nome de entrada e verifique se este 
+aluno consta na listagem dos aprovados e mostre sua classificação (ordem de aprovação, 
+representada pelo índice do vetor +1). Caso o nome informado não exista na lista dos 
+aprovados, mostre uma mensagem ‘Nome informado não consta na lista dos aprovados`.*/
+
+//Inclusão de bibliotecas
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//Função principal
+int main()
+{
+//Declaração de variáveis
+int num = 1, cont = 0;
+char aprovados[10] [100], nome[100];
+
+//Entrada de dados
+for(int i = 0; i < 10; i++)
+{
+printf("Digite o nome do %d° aluno aprovado\n", i + 1);
+fgets(aprovados[i], sizeof(aprovados[i]), stdin);
+}
+
+//Cálculo
+do
+   {
+    printf("Digite o nome do aluno ou digite 0 para sair\n");
+    scanf("%d", &num);
+    if(num == 0)
+       exit(0);
+    fgets(nome, sizeof(nome), stdin);
+ 
+    //Saída de dados
+    for(int i = 0; i < 10; i++)
+       {
+       if(!strcmp(nome, aprovados[i]))
+       printf("Aluno %s aprovado em %d lugar\n",nome, i + 1);
+       if(strcmp(nome, aprovados[i]))
+          cont++;
+       if (cont == 10)    
+          printf("Nome informado não consta na lista dos aprovados\n");
+        }
+    cont = 0;
+    }while(num != 0);
+    
+//Fim da função principal
+return 0;
+}
