@@ -1,0 +1,33 @@
+/*Faça um programa que leia uma string digitada pelo usuário (máximo 20 caracteres)
+e imprima na tela o número de vogais existente nesta string.*/
+
+//Inclusão de bibliotecas
+#include <stdio.h>
+#include <string.h>
+
+//Função principal
+int main()
+{
+
+//Declaração de variáveis
+int vogais = 0;
+char string[20];
+
+//Entrada de dados
+printf("Digite uma frase\n");
+fgets(string, sizeof(string), stdin);
+
+ //Cálculo
+for(int i = 0; i < 20; i++)
+   {
+    if(string[i] == 'A' || string[i] == 'E'|| string[i] == 'I'|| string[i] == 'O' || string[i] == 'U' || string[i] == 'a' || string[i] == 'e'|| string[i] == 'i'|| string[i] == 'o' || string[i] == 'u')
+        vogais++;
+   }
+
+
+//Saída de dados
+printf("Numero de vogais = %d\n", vogais);
+    
+//Fim da função principal
+return 0;
+}
