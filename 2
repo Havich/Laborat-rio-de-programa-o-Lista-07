@@ -1,49 +1,50 @@
-/*Leia e armazene num vetor de 10 posições o nome dos alunos aprovados no vestibular para 
-Ciência da Computação em 2007/1. A seguir, leia um nome de entrada e verifique se este 
-aluno consta na listagem dos aprovados e mostre sua classificação (ordem de aprovação, 
-representada pelo índice do vetor +1). Caso o nome informado não exista na lista dos 
-aprovados, mostre uma mensagem ‘Nome informado não consta na lista dos aprovados`.*/
+/*Leia e armazene num vetor de 5 posições o nome dos alunos matriculados na disciplina de
+Algoritmos I. Considere que a posição do vetor corresponde ao código do aluno. A seguir, armazene
+em 3 vetores as notas N1, N2 e N3 obtidas por estes alunos na disciplina de
+Algoritmos I, respectivamente. Considere que índice do vetor corresponde ao código do aluno.
+Sabendo que a média final de um aluno é definida como a média aritmética entre as 3 notas
+obtidas, e que um aluno é aprovado se obtiver média igual ou superior a 6.0, mostre para cada
+aluno: seu nome; média final obtida; "aprovado" ou "reprovado".*/
 
 //Inclusão de bibliotecas
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+
 //Função principal
 int main()
 {
 //Declaração de variáveis
-int num = 1, cont = 0;
-char aprovados[10] [100], nome[100];
+float n1[5], n2[5], n3[5], medias[5];
+char alunos[5] [100];
 
 //Entrada de dados
-for(int i = 0; i < 10; i++)
-{
-printf("Digite o nome do %d° aluno aprovado\n", i + 1);
-fgets(aprovados[i], sizeof(aprovados[i]), stdin);
-}
+for(int i = 0; i < 5; i++)
+    {
+    printf("Digite o nome do %d° aluno\n", i + 1);
+    fgets(alunos[i], sizeof(alunos[i]), stdin);
+    }
 
 //Cálculo
-do
-   {
-    printf("Digite o nome do aluno ou digite 0 para sair\n");
-    scanf("%d", &num);
-    if(num == 0)
-       exit(0);
-    fgets(nome, sizeof(nome), stdin);
- 
-    //Saída de dados
-    for(int i = 0; i < 10; i++)
-       {
-       if(!strcmp(nome, aprovados[i]))
-       printf("Aluno %s aprovado em %d lugar\n",nome, i + 1);
-       if(strcmp(nome, aprovados[i]))
-          cont++;
-       if (cont == 10)    
-          printf("Nome informado não consta na lista dos aprovados\n");
-        }
-    cont = 0;
-    }while(num != 0);
+for(int i = 0; i < 5; i++)
+    {
+    printf("Digite a 1° nota do aluno %s\n", alunos[i]);
+    scanf("%f", &n1[i]);
+    printf("Digite a 2° nota do aluno %s\n", alunos[i]);
+    scanf("%f", &n2[i]);
+    printf("Digite a 3° nota do aluno %s\n", alunos[i]);
+    scanf("%f", &n3[i]);
+    medias[i] = ((n1[i] + n2[i] + n3[i]) / 3);
+    }
+//Saída de dados
+for(int i = 0; i < 5; i++)
+    {
+    if(medias[i] < 6)
+        printf("\nAluno codigo %d\nNome: %s\nnota 1 = %.2f\tnota 2 = %.2f\tnota 3 = %.2f\nmedia = %.2f\nReprovado\n", i, alunos[i], n1[i], n2[i], n3[i], medias[i]);
+    else
+        printf("\nAluno codigo %d\nNome: %s\nnota 1 = %.2f\tnota 2 = %.2f\tnota 3 = %.2f\nmedia = %.2f\nAprovado\n", i, alunos[i], n1[i], n2[i], n3[i], medias[i]);    
+    }
     
 //Fim da função principal
 return 0;
